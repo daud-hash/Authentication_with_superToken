@@ -1,0 +1,3 @@
+[submodule "Auth-with-superToken-backend-SDK"]
+	path = Auth-with-superToken-backend-SDK
+	url = git@github.com:daud-hash/Auth-with-superToken-backend-SDK.git
