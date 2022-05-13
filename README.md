@@ -42,5 +42,5 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ## Learn More
 
 **Note: {getSuperTokensRoutesForReactRouterDom(reactRouterDom)}
-**Error in react router dom version >=6
+Error in react router dom version >=6**
  
