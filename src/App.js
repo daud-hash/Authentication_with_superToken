@@ -1,10 +1,12 @@
 
 import './App.css';
 import SuperTokens from "supertokens-auth-react";
-import EmailPassword, { signOut } from "supertokens-auth-react/recipe/emailpassword";
+import { signOut } from "supertokens-auth-react/recipe/thirdpartyemailpassword";
+import ThirdPartyEmailPassword, {Github, Google, Facebook} from "supertokens-auth-react/recipe/thirdpartyemailpassword";
 import Session from "supertokens-auth-react/recipe/session";
 import { Header } from './components/header/Header';
 import { Router } from './routes/Router';
+
 
 SuperTokens.init({
   appInfo: {
@@ -14,9 +16,17 @@ SuperTokens.init({
     apiBasePath: '/api/auth',
     websiteBasePath: '/auth'
   },
-  recipeList: [EmailPassword.init(), Session.init()]
+  recipeList: [ThirdPartyEmailPassword.init({
+    signInAndUpFeature: {
+      providers: [
+        Github.init(),
+        Google.init(),
+        Facebook.init()
+      ]
+    }
+  }), Session.init()]
 })
-function App() {
+export const App = () => { 
   async function logout() {
     await signOut()
     window.location.href = '/';
@@ -28,5 +38,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

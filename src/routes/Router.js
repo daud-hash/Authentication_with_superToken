@@ -3,7 +3,7 @@ import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { getSuperTokensRoutesForReactRouterDom } from 'supertokens-auth-react';
 import { BookStore } from '../components/books/BookStore';
 import * as reactRouterDom from 'react-router-dom'
-import EmailPassword from "supertokens-auth-react/recipe/emailpassword";
+import { ThirdPartyEmailPasswordAuth } from 'supertokens-auth-react/recipe/thirdpartyemailpassword';
 
 export const Router = () => {
   return (
@@ -11,12 +11,13 @@ export const Router = () => {
         <Switch>
             {getSuperTokensRoutesForReactRouterDom(reactRouterDom)}
             <Route path='/'> 
-            <EmailPassword.EmailPasswordAuth
-            onSessionExpired={() => {
-                alert('Session Expired')
-            }}>
-                <BookStore />
-            </EmailPassword.EmailPasswordAuth>
+               {
+                 <ThirdPartyEmailPasswordAuth onSessionExpired={
+                   alert('Session is expired')
+                 }>
+                   <BookStore />
+                 </ThirdPartyEmailPasswordAuth>
+               }
             </Route>
         </Switch>
     </BrowserRouter>
